@@ -8,7 +8,8 @@ const profileSchema = new Schema({
   recipes: [{ type: Schema.Types.ObjectId, ref: 'Recipe' }],
   relatives: [{ type: Schema.Types.ObjectId, ref: 'Profile' }],
   pendingRelatives: [{ type: Schema.Types.ObjectId, ref: 'Profile' }],
-  bio: String
+  bio: String,
+  location: String
 },{
   timestamps: true,
 })

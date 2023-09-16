@@ -10,9 +10,10 @@ const recipeSchema = new Schema({
   audio: String,
   recipeYield: Number,
   recipeCategory: String,
-    recipeCuisine: String,
-    ingredients: [String],
-    instructions: [String],
+  recipeCuisine: String,
+  ingredients: [String],
+  instructions: [String],
+  private: Boolean,
 },{
   timestamps: true,
 })
