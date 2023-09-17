@@ -8,6 +8,7 @@ const recipeSchema = new Schema({
   author: {type: Schema.Types.ObjectId, ref: 'Profile'},
   description: String,
   audio: String,
+  video: String,
   recipeYield: Number,
   recipeCategory: String,
   recipeCuisine: String,
