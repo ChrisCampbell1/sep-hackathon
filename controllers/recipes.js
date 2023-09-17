@@ -53,4 +53,46 @@ const deleteRecipe = async (req, res) => {
   }
 }
 
-export { index, show, create, update, deleteRecipe }
+const addImage = async (req, res) => {
+  try {
+    const imageFile = req.files.image.path
+    const recipe = await Recipe.findById(req.params.id)
+    const image = await cloudinary.uploader.upload(imageFile, { tags: `${req.user.email}` })
+    recipe.image = image.url
+    const savedRecipe = await recipe.save()
+    res.status(200).json(savedRecipe)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
+const addVideo = async (req, res) => {
+  try {
+    const videoFile = req.files.video.path
+    const recipe = await Recipe.findById(req.params.id)
+    const video = await cloudinary.uploader.upload(videoFile, { tags: `${req.user.email}` })
+    recipe.video = video.url
+    const savedRecipe = await recipe.save()
+    res.status(200).json(savedRecipe)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
+const addAudio = async (req, res) => {
+  try {
+    const audioFile = req.files.audio.path
+    const recipe = await Recipe.findById(req.params.id)
+    const audio = await cloudinary.uploader.upload(audioFile, { tags: `${req.user.email}` })
+    recipe.audio = audio.url
+    const savedRecipe = await recipe.save()
+    res.status(200).json(savedRecipe)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
+export { index, show, create, update, deleteRecipe, addImage, addVideo, addAudio }
