@@ -71,7 +71,7 @@ const addVideo = async (req, res) => {
   try {
     const videoFile = req.files.video.path
     const recipe = await Recipe.findById(req.params.id)
-    const video = await cloudinary.uploader.upload(videoFile, { tags: `${req.user.email}` })
+    const video = await cloudinary.uploader.upload(videoFile, { tags: `${req.user.email}`, resource_type: `auto` })
     recipe.video = video.url
     const savedRecipe = await recipe.save()
     res.status(200).json(savedRecipe)
@@ -85,7 +85,7 @@ const addAudio = async (req, res) => {
   try {
     const audioFile = req.files.audio.path
     const recipe = await Recipe.findById(req.params.id)
-    const audio = await cloudinary.uploader.upload(audioFile, { tags: `${req.user.email}` })
+    const audio = await cloudinary.uploader.upload(audioFile, { tags: `${req.user.email}`, resource_type: `auto` })
     recipe.audio = audio.url
     const savedRecipe = await recipe.save()
     res.status(200).json(savedRecipe)
