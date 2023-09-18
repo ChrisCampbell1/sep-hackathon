@@ -9,12 +9,12 @@ const recipeSchema = new Schema({
   description: String,
   audio: String,
   video: String,
-  recipeYield: Number,
+  recipeYield: String,
   recipeCategory: String,
   recipeCuisine: String,
   ingredients: [String],
   instructions: [String],
-  private: Boolean,
+  share: Boolean
 },{
   timestamps: true,
 })
