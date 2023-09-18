@@ -67,6 +67,8 @@ try {
   // approver.pendingRelatives = updatedPending
   approver.pendingRelatives.pull(approved._id)
   approver.relatives.push(approved._id)
+  approver.populate('relatives')
+  approver.populate('pendingRelatives')
   await approver.save()
   approved.relatives.push(approver._id)
   await approved.save()
