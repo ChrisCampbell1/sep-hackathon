@@ -5,11 +5,12 @@ import * as recipesCtrl from '../controllers/recipes.js'
 const router = Router()
 
 /*---------- Public Routes ----------*/
+router.get('/', recipesCtrl.index)
 
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.get('/', checkAuth, recipesCtrl.index)
+// router.get('/', checkAuth, recipesCtrl.index)
 router.get('/:id', checkAuth, recipesCtrl.show)
 router.post('/', checkAuth, recipesCtrl.create)
 router.put('/:id', checkAuth, recipesCtrl.update)
