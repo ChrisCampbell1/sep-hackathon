@@ -12,6 +12,17 @@ const index = async (req, res) => {
   }
 }
 
+const featured = async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ share: true })
+    .populate('author')
+    res.status(200).json(recipes)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 const show = async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id)
@@ -95,4 +106,4 @@ const addAudio = async (req, res) => {
   }
 }
 
-export { index, show, create, update, deleteRecipe, addImage, addVideo, addAudio }
+export { index, show, create, update, deleteRecipe, addImage, addVideo, addAudio, featured }

@@ -6,6 +6,7 @@ const router = Router()
 
 /*---------- Public Routes ----------*/
 router.get('/', recipesCtrl.index)
+router.get('/featured', recipesCtrl.featured)
 
 
 /*---------- Protected Routes ----------*/
